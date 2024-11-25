@@ -10,8 +10,6 @@ const StoreItem = (product: Products) => {
     (item) => item.id === product.id
   )?.quantity;
 
-  console.log(item_quantity);
-
   return (
     <div className="shadow rounded-md flex  flex-col justify-between p-4 bg-white">
       <div>

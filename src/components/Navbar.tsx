@@ -8,7 +8,7 @@ import OffCanvas from "./OffCanvas";
 const Navbar = () => {
   const active_url = "bg-gray-800 rounded-full text-white";
   const { cartQuantity } = useCartContext();
-  const { isOnoffcanvas, toggleCanvas } = useOffCanvas();
+  const { toggleCanvas, isOnoffcanvas } = useOffCanvas();
 
   return (
     <>
@@ -37,7 +37,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      {isOnoffcanvas && <OffCanvas />}
+      <OffCanvas />
       <Outlet />
     </>
   );

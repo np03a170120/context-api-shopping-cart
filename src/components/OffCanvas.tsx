@@ -2,7 +2,7 @@ import { useCartContext } from "../context/CartContext";
 import { useOffCanvas } from "../context/OffCanvasContext";
 
 const OffCanvas = () => {
-  const { toggleCanvas } = useOffCanvas();
+  const { toggleCanvas, isOnoffcanvas } = useOffCanvas();
   const { cartItems, cartQuantity, emptyCart } = useCartContext();
 
   const AvailableCartItems = () => {
@@ -20,7 +20,9 @@ const OffCanvas = () => {
   };
 
   return (
-    <div className="h-dvh  fixed right-0 top-0 w-[24rem] bg-gray-100 overflow-scroll">
+    <div
+      className={`h-dvh delay-100 transition-all fixed right-[-400px] top-0 w-[24rem] bg-gray-100 overflow-scroll ${isOnoffcanvas ? " !right-0 transition-all z-10 " : "z-[-1]"}`}
+    >
       <button onClick={() => toggleCanvas()}>close btn</button>
       <button onClick={() => emptyCart()}>Empty cart</button>
       <h1>offcanvas</h1>
