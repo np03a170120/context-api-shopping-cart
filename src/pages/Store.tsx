@@ -17,7 +17,6 @@ const Store = () => {
 
   return (
     <div className="container mx-auto text-center my-4">
-      <h1 className="text-xl mb-6">Our Store</h1>
       <div className="grid grid-cols-4  gap-5">
         {products.map((product) => (
           <StoreItem key={product.id} {...product} />

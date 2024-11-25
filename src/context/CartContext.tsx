@@ -1,5 +1,5 @@
 import { ReactNode } from "@tanstack/react-router";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { Products } from "../types/Products";
 
 type CartContextProps = {
@@ -10,6 +10,8 @@ type CartContextType = {
   addToCart: (product: Products) => void;
   removeFromCart: (product: Products) => void;
   cartItems: Products[];
+  cartQuantity: number;
+  emptyCart: () => void;
 };
 
 const CartContext = createContext<CartContextType | null>(null);
@@ -56,8 +58,19 @@ export const CartContextProvider = ({ children }: CartContextProps) => {
     }
   };
 
+  const cartQuantity = cartItems.reduce(
+    (quantity, item) => item.quantity + quantity,
+    0
+  );
+
+  const emptyCart = () => {
+    setCartItems([]);
+  };
+
   return (
-    <CartContext.Provider value={{ addToCart, cartItems, removeFromCart }}>
+    <CartContext.Provider
+      value={{ addToCart, emptyCart, cartQuantity, cartItems, removeFromCart }}
+    >
       {children}
     </CartContext.Provider>
   );

@@ -1,8 +1,9 @@
-import ReactDOM from "react-dom/client";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
-import { routeTree } from "./routeTree.gen";
+import ReactDOM from "react-dom/client";
 import { CartContextProvider } from "./context/CartContext";
+import { OffcanvasContextProvider } from "./context/OffCanvasContext";
 import "./index.css";
+import { routeTree } from "./routeTree.gen";
 
 const router = createRouter({
   routeTree,
@@ -20,8 +21,10 @@ const rootElement = document.getElementById("app")!;
 if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
-    <CartContextProvider>
-      <RouterProvider router={router} />
-    </CartContextProvider>
+    <OffcanvasContextProvider>
+      <CartContextProvider>
+        <RouterProvider router={router} />
+      </CartContextProvider>
+    </OffcanvasContextProvider>
   );
 }
