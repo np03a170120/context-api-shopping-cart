@@ -1,15 +1,14 @@
 import { ShoppingBag } from "@phosphor-icons/react";
 import { Link, Outlet } from "@tanstack/react-router";
 import { useCartContext } from "../context/CartContext";
-import navLinks from "../data/NavigationLinks.json";
 import { useOffCanvas } from "../context/OffCanvasContext";
+import navLinks from "../data/NavigationLinks.json";
 import OffCanvas from "./OffCanvas";
 
 const Navbar = () => {
   const active_url = "bg-gray-800 rounded-full text-white";
   const { cartQuantity } = useCartContext();
-  const { toggleCanvas, isOnoffcanvas } = useOffCanvas();
-
+  const { toggleCanvas } = useOffCanvas();
   return (
     <>
       <nav className="p-4 sticky items-center top-0 flex gap-2 justify-between text-gray-500 shadow-sm bg-white w-full text-md">

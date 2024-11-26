@@ -3,22 +3,20 @@ import { Products } from "../types/Products";
 import { useCartContext } from "../context/CartContext";
 
 const StoreItem = (product: Products) => {
+  const { id, images, price, title } = product;
+
   const { addToCart, cartItems, removeFromCart } = useCartContext();
   const [isClickAddToCart, setIsClickedAddToCart] = useState(false);
 
-  let item_quantity = cartItems.find(
-    (item) => item.id === product.id
-  )?.quantity;
+  let item_quantity = cartItems.find((item) => item.id === id)?.quantity;
 
   return (
     <div className="shadow rounded-md flex  flex-col justify-between p-4 bg-white">
       <div>
-        <img className="" src={product.images} alt="" />
+        <img className="" src={images} alt="" />
         <div className="mb-4">
-          <h1 className="font-semibold mb-1 text-lg text-gray-700">
-            {product.title}
-          </h1>
-          <p className="text-gray-600">${product.price}</p>
+          <h1 className="font-semibold mb-1 text-lg text-gray-700">{title}</h1>
+          <p className="text-gray-600">${price}</p>
         </div>
       </div>
       {!isClickAddToCart || item_quantity === undefined ? (
