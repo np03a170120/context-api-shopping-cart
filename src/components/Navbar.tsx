@@ -15,6 +15,7 @@ const Navbar = () => {
         <div>
           {navLinks.map((item) => (
             <Link
+              key={item.name}
               to={`${item.link}`}
               activeProps={{
                 className: `${active_url}`,
